@@ -6,18 +6,31 @@ const app = express();
 // Essa função express() vem do módulo express, essa função cria uma
 // instacia (copia do framework) para a variável
 
+// A variável req é responsável por receber dados da requisição
+// A variável res refere-se a resposta que o servidor irá enviar
+
 app.get('/', (req, res)=>{
     // .get cria uma rota do tipo GET
     res.send('You are Welcome');
     // .send serve para enviar alguma mensagem
 });
 
-app.get('/sobre', (req, res)=>{
-    res.send('About page');
+app.get('/sobre/:name/:idade/:sexo', (req, res)=>{
+    // Para criar parametros utilimos :nome-do-parametro
+    let name = req.params.name;
+    // Para armazenar o valor de um parametro numa variavel
+    // utilizamos req.params.nome-do-
+    // res.send(`Hello ${name}`);
+    res.send(req.params)
 });
 
 app.get('/blog', (req, res)=>{
     res.send('Blog page');
+    // O .send() só pode ser utilizada uma vez por rota
+});
+
+app.get('/teste', (requ, res) => {
+    res.sendFile(__dirname + '/index.html')
 });
 
 app.listen(3000, function(){
