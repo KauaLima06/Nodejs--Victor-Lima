@@ -31,6 +31,9 @@ app.get('/blog', (req, res)=>{
 
 app.get('/teste', (requ, res) => {
     res.sendFile(__dirname + '/index.html')
+    // a variável __dirname retorna o cominho do diterório atual
+    // .sendFile é uma das formas de enviar arquivos, mas não é a mais 
+    // recomendada
 });
 
 app.listen(3000, function(){
